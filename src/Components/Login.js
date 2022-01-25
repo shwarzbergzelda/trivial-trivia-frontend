@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoginContext} from './Contexts/LoginContext'
+import { useLoginContext } from './Contexts/LoginContext'
 
 export default function Login(){
     const { dispatch, context: { username, displayUserProfile } } = useLoginContext();
