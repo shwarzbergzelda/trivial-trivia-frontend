@@ -1,4 +1,5 @@
-body{
+.App {
+  text-align: center;
   background: radial-gradient(50% 50% at 50% 50%, #570101 0%, #000000 100%);
   background-blend-mode: darken;
   box-shadow: 5px 4px 5px rgba(0, 0, 0, 0.35);
@@ -11,40 +12,16 @@ body{
   border-radius: 30px;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .navbar{
   display: flex;
   height: 70px;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+}
+
+.lightning-image{
+  height: 100px;
 }
 
 
