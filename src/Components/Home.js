@@ -11,6 +11,9 @@ export default function Home(){
             <li>
             <Link to= '/Profile'> PROFILE</Link>
             </li>
+            <li>
+            <Link to= '/Category'> CATEGORY</Link>
+            </li>
         </ul>
         </div>
         )
