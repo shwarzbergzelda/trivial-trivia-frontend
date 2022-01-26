@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/Home"
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
-
+import NavBar from "./Components/Navbar";
 
 
 function App() {
   return (
     <div className="App">
-      <nav className='app--nav'>
+      <NavBar />
         <Router>
           <Routes className='routes'>
             <Route exact path='/' element={<Home/>} />
@@ -17,7 +17,6 @@ function App() {
             <Route exact path='/Profile' element={<Profile/>} />
           </Routes>
         </Router>
-      </nav>
     </div>
   );
 }

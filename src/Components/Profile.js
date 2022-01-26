@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Login from "./Login"
+import Navbar from "./Navbar"
 
 import { LoginContext } from './Contexts/LoginContext'
 
@@ -9,12 +10,14 @@ function Profile(){
     const [displayProfile, setDisplayProfile] = useState(false);
 
     return (
-        <div className="Profile">
+        <>
+        {/* <Navbar /> */}
+        {/* <div className="Profile">
         <LoginContext.Provider value = {{ username, setUsername, setDisplayProfile }}>
             {displayProfile ? <Profile /> : <Login />}
         </LoginContext.Provider>
-        </div>
-
+        </div> */}
+        </>
     )
 }
 
