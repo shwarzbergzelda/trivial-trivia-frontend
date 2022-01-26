@@ -8,7 +8,13 @@ export default function Navbar() {
         <>
             <nav className='navbar'>
                 <a href='/'><img className='logo' src={logo} alt="Logo"></img></a>
-                <a href='/Profile'><img className='profile' src={profile} alt="Profile"></img></a>
+                <div>
+                    <a href='/Profile'><img className='profile' src={profile} alt="Profile"></img></a>
+                    <div className='leaderboard'>
+                        <a href='/Leaderboard'>Leaderboard</a>
+                    </div>
+                </div>
+                
             </nav>
         </>
     )
