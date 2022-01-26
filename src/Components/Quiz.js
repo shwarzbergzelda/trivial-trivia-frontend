@@ -13,6 +13,7 @@ export default function Quiz() {
     const navigate = useNavigate();
     let selectedAnswerChoiceIndex = -1;
     let key = 0;
+    console.log(quizJSON)
 
     const randomizeAnswersOrder = (triviaProblem) => {
         const answersArray = [];
@@ -32,6 +33,7 @@ export default function Quiz() {
             usedIndices.push(randomIndex);
         }
 
+        console.log(answersArray);
         return answersArray;
     }
 
@@ -45,14 +47,14 @@ export default function Quiz() {
             alert('Please select an answer choice!');
             return;
         }
-        if(correctAnswerIndex == selectedAnswerChoiceIndex) {
+        if (correctAnswerIndex == selectedAnswerChoiceIndex) {
             incrementCorrectAnswersCount();
         }
         key = 0;
         selectedAnswerChoiceIndex = -1;
         if (id < 9) {
             setID(prevID => prevID + 1);
-            setRandomizedAnswersArray(randomizeAnswersOrder(quizJSON[id]));
+            setRandomizedAnswersArray(randomizeAnswersOrder(quizJSON[id + 1]));
         } else {
             navigate('/Quiz-Results')
         }
@@ -61,7 +63,7 @@ export default function Quiz() {
     const handleTriviaAnswerSelect = (event) => {
         selectedAnswerChoiceIndex = event.target.value;
     }
-
+    
     return(
         <div>
             <h1 className="header">{quizJSON[id].question}</h1>
@@ -75,14 +77,4 @@ export default function Quiz() {
             <button className="submit-button" onClick={handleTriviaProblemSubmit}>Submit</button>
         </div>
     )
-};
-    // const isMounted = useRef(false);
-
-
-    // useEffect(() => {
-    //     if (isMounted.current) {
-    //         handleTriviaProblemSubmit();
-    //     } else {
-    //       isMounted.current = true;
-    //     }
-    //   }, [questionWasSubmitted]);
+}
