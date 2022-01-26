@@ -13,6 +13,7 @@ export default function ContextKeeper(props) {
     const [category, setCategory] = useState(null);
     const [quizJSON, setQuizJSON] = useState([]);
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0)
+    const [numberOfQuizQuestions, setNumberOfQuizQuestions] = useState(10)
 
     const chooseCategory = (categoryNumber) => {
         setCategory(categoryNumber);
@@ -39,7 +40,8 @@ export default function ContextKeeper(props) {
             fetchQuizJSON: fetchQuizJSON, 
             incrementCorrectAnswersCount: incrementCorrectAnswersCount, 
             resetCorrectAnswersCount: resetCorrectAnswersCount,
-            correctAnswersCount: correctAnswersCount
+            correctAnswersCount: correctAnswersCount,
+            numberOfQuizQuestions: numberOfQuizQuestions
         }}>
             {props.children}
         </Context.Provider>
