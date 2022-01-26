@@ -28,3 +28,22 @@
 .logo {
   height: 100px;
 }
+
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 28px;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+}
+
+p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 21px;
+  color: #FFFFFF;
+}
