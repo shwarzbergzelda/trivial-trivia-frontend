@@ -6,13 +6,13 @@ export default function Home(){
         <div className="home">
         <ul>
             <li>
-            <Link to= '/Login'> LOGIN </Link>
+                <Link to='/Login'> LOGIN </Link>
             </li>
             <li>
-            <Link to= '/Profile'> PROFILE</Link>
+                <Link to='/Profile'> PROFILE</Link>
             </li>
             <li>
-            <Link to= '/Category'> CATEGORY</Link>
+                <Link to='/Category'> CATEGORY</Link>
             </li>
         </ul>
         </div>
