@@ -6,11 +6,14 @@ import Profile from "./Components/Profile";
 import Category from "./Components/Category";
 import Quiz from './Components/Quiz'
 import QuizResults from './Components/QuizResults'
+import Navbar from './Components/Navbar'
+import Leaderboard from './Components/Leaderboard'
 
 function App() {
   return (
     <div className="App">
       <nav className='app--nav'>
+        <Navbar />
         <Router>
           <Routes className='routes'>
             <Route exact path='/' element={<Home />} />
@@ -19,6 +22,7 @@ function App() {
             <Route exact path='/Category' element={<Category />} />
             <Route exact path='/Quiz' element={<Quiz />} />
             <Route exact path='/Quiz-Results' element={<QuizResults />} />
+            <Route exact path='/Leaderboard' element={<Leaderboard />} />
           </Routes>
         </Router>
       </nav>

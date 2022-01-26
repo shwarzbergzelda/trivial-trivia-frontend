@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, memo } from 'react'
 import { Context } from './Context'
 import { useNavigate } from 'react-router-dom'
+import '../styles/Selection.css'
 
 export default function Quiz() {
 
@@ -63,15 +64,15 @@ export default function Quiz() {
 
     return(
         <div>
-            <h1>{quizJSON[id].question}</h1>
+            <h1 className="header">{quizJSON[id].question}</h1>
             {randomizedAnswersArray.map((answer, index) => {
                 return (
-                    <div key={key++}>
-                        <button value={index} onClick={handleTriviaAnswerSelect}>{answer}</button>
+                    <div className="buttons-grid" key={key++}>
+                        <button className="button" value={index} onClick={handleTriviaAnswerSelect}>{answer}</button>
                     </div>
                 )
             })}
-            <button onClick={handleTriviaProblemSubmit}>Submit</button>
+            <button className="submit-button" onClick={handleTriviaProblemSubmit}>Submit</button>
         </div>
     )
 };
