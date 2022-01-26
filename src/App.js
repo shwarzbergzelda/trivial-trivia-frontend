@@ -3,18 +3,26 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Components/Home"
 import Login from "./Components/Login";
 import Profile from "./Components/Profile";
-
-
+import Category from "./Components/Category";
+import Quiz from './Components/Quiz'
+import QuizResults from './Components/QuizResults'
+import Navbar from './Components/Navbar'
+import Leaderboard from './Components/Leaderboard'
 
 function App() {
   return (
     <div className="App">
       <nav className='app--nav'>
+        <Navbar />
         <Router>
           <Routes className='routes'>
-            <Route exact path='/' element={<Home/>} />
-            <Route exact path='/Login' element={<Login/>} />
-            <Route exact path='/Profile' element={<Profile/>} />
+            <Route exact path='/' element={<Home />} />
+            {/* <Route exact path='/Login' element={<Login/>} /> */}
+            <Route exact path='/Profile' element={<Profile />} />
+            <Route exact path='/Category' element={<Category />} />
+            <Route exact path='/Quiz' element={<Quiz />} />
+            <Route exact path='/Quiz-Results' element={<QuizResults />} />
+            <Route exact path='/Leaderboard' element={<Leaderboard />} />
           </Routes>
         </Router>
       </nav>

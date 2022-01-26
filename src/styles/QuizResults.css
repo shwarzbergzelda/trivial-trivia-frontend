@@ -1,0 +1,33 @@
+.quiz-results-main {
+    height: 400px;
+    width: 900px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.quiz-results-header {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 50px;
+}
+
+.total-points-header {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.results-text {
+    color: #ffffff;
+    font-size: 25px;
+    margin-top: -20px;
+}
+
+.link-button a {
+    text-decoration: none;
+    color: #ffffff;
+}

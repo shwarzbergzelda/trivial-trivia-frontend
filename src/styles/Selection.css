@@ -1,0 +1,62 @@
+.selection-menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 550px;
+    width: 1000px;
+}
+
+.header {
+    font-size: 40px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.button, .submit-button {
+    background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
+    border-radius: 40px;
+    width: 275px;
+    height: 75px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 21px;
+    color: #FFFFFF;
+    border: none;
+    margin: 15px 40px;
+}
+
+.button:hover, .submit-button:hover{
+    -webkit-animation: animate 3s;
+    -moz-animation: animate 3s;
+    animation: animate 3s;
+}
+
+@-webkit-keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+@-moz-keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+@keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+
+.button:focus {
+    background: linear-gradient(180deg, rgba(12, 32, 61, 0.87) -7.55%, rgba(196, 196, 196, 0.3) 92.45%);
+}
+
+.submit-button:active {
+    background: linear-gradient(180deg, rgba(12, 32, 61, 0.87) -7.55%, rgba(196, 196, 196, 0.3) 92.45%);
+}
