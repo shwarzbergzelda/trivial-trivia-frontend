@@ -1,16 +1,17 @@
 import React from 'react';
 import logo from '../images/logo.png'
 import profile from '../images/Profile.png'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return(
         <>
             <nav className='navbar'>
-                <a href='/'><img className='logo' src={logo} alt="Logo"></img></a>
+            <Link to='/'><img className='logo' src={logo} alt="Logo"></img></Link>
                 <div>
-                    <a href='/Profile'><img className='profile' src={profile} alt="Profile"></img></a>
-                    <div className='leaderboard'>
-                        <a href='/Leaderboard'>Leaderboard</a>
+                <Link to='/Profile'><img className='profile' src={profile} alt="Profile"></img></Link>
+                    <div className='leaderboard-button'>
+                    <Link to='/Leaderboard'>Leaderboard</Link>
                     </div>
                 </div>
                 

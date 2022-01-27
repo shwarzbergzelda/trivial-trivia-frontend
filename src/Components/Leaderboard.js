@@ -27,11 +27,11 @@ export default function Leaderboard(){
     return(
         <>
         <img className='lightning-image' src={LightningAlt}></img>
-        <h1>Leaderboard</h1>
+        <div className="leaderboard-text">Leaderboard</div>
         {
         leaderboardData && leaderboardData.map(item =>{
             return(
-                <p>{count++}|{item.userUserName}|{item.category}|{item.score}</p>
+                <div className="leaderboard-rank">{count++}|{item.userUserName}|{item.category}|{item.score}</div>
             )
         })}
         <select value={selectValue} onChange={handleChange} id="select-category">
