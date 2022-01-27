@@ -4,14 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login(){
     let navigate = useNavigate();
-    const { setLoginToTrue, reassignUserInfo, login, isLogin  } = useContext(Context);
+    const { setLoginToTrue, reassignUserInfo, login, isLogin, reassignUserName  } = useContext(Context);
 
     const [enteredUserName,setEnteredUserName] = useState(null)
     const [enteredPassword,setEnteredPassword] = useState(null)
 
     const logInAndNavigate = (enteredUserName,enteredPassword) => {
         login(enteredUserName,enteredPassword)
-        if(isLogin){navigate('/category')}
+        if(isLogin){
+        reassignUserName(enteredUserName)
+        navigate('/category')
+        }
     }
 
     return(
