@@ -8,9 +8,25 @@ export default function Login(){
 
     const [enteredUserName,setEnteredUserName] = useState(null)
     const [enteredPassword,setEnteredPassword] = useState(null)
+    const [accountCheck,setAccountCheck] = useState('')
+    const [emptyCheck, setEmptyCheck] = useState('')
 
-    const logInAndNavigate =  (enteredUserName,enteredPassword) => {
-        login(enteredUserName, enteredPassword)
+    const logInAndNavigate = async (enteredUserName,enteredPassword) => {
+        setEmptyCheck('')
+        if((enteredUserName === null || enteredUserName === '') && (enteredPassword === null || enteredPassword === '')){
+            setEmptyCheck("Please enter a username and password")
+            return;
+        }
+        if(enteredUserName === null || enteredUserName === ''){
+            setEmptyCheck("Please enter a username")
+            return;
+        }
+        if(enteredPassword === null || enteredPassword === ''){
+            setEmptyCheck("Please enter a password")
+            return;
+        }
+    
+        setAccountCheck(await login(enteredUserName, enteredPassword))
     }
 
     useEffect(()=>{
@@ -48,11 +64,11 @@ export default function Login(){
         >
         Register
         </button>
-        <button className = "button"
-            onClick =  {() => console.log(isLogin)}
-        >
-        Check
-        </button>
+        {accountCheck === "Invalid username" && <h1>INVALID USER NAME</h1>}
+        {accountCheck === "Incorrect password" && <h1>INCORRECT PASSWORD</h1>}
+        {emptyCheck === "Please enter a password" && <h1>PLEASE ENTER A PASSWORD</h1>}
+        {emptyCheck === "Please enter a username" && <h1>PLEASE ENTER A USERNAME</h1>}
+        {emptyCheck === "Please enter a username and password" && <h1>PLEASE ENTER A USERNAME AND PASSWORD</h1>}
         </div>
     )
 }
