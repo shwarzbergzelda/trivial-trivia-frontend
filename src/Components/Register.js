@@ -16,7 +16,7 @@ export default function Register(){
 
     const logInAndNavigate = (enteredUserName,enteredPassword) => {
         login(enteredUserName,enteredPassword)
-        navigate('/')
+        if(isLogin){navigate('/')}
     }
 
     const RegisterAndNavigate = async (enteredUserName, enteredPassword) => {
