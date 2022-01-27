@@ -9,6 +9,7 @@ export default function SignOrGuest() {
   const { isLogin } = useContext(Context);
 
   useEffect(()=>{
+    document.title = "Sign In - Trivial Trivia"
     if (isLogin) {navigate('/category')};
   },[])
 

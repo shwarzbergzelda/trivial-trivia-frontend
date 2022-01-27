@@ -8,6 +8,10 @@ export default function Leaderboard(){
     const [selectValue, setSelectValue] = useState('TTP')
 
     useEffect(() => {
+        document.title = "Leaderboard - Trivial Trivia"
+    }, [])
+
+    useEffect(() => {
         const fetchLeaderboard = async () => {
             const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/quizscore/${selectValue}/getTopTen`);
             setleaderboardData(res.data)
