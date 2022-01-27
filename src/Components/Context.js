@@ -79,10 +79,14 @@ export default function ContextKeeper(props) {
 
     const login = async (enteredUserName, enteredPassword) => {
         const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/login/${enteredUserName}`);
+        if(res.data === "" && enteredUserName !== null ){
+            return "Invalid username"
+        }else if (res.data.password !== enteredPassword && enteredPassword !== null){
+            return "Incorrect password"
+        }
         if(enteredPassword === res.data.password){
             setLoginToTrue()
             const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${enteredUserName}`);
-            console.log(res.data)
             reassignUserInfo(res.data)
         }
     }
