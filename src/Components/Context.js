@@ -47,7 +47,13 @@ export default function ContextKeeper(props) {
     }
 
     const fetchQuizJSON = async () => {
-        const res = await axios.get(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=medium&type=multiple`);
+        const res = await axios.get(`https://opentdb.com/api.php?amount=10&category=${category}&d&type=multiple`);
+        console.log(res.data.results)
+        // let stringData = JSON.stringify(res.data.results)
+        // stringData = stringData.replaceAll("&#039;", "'")
+        // stringData = stringData.replaceAll("&quot;", '"')
+        // console.log(stringData)
+        // const newRes = JSON.parse(stringData)
         setQuizJSON(res.data.results)
     }
 

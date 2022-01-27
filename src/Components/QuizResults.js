@@ -6,58 +6,68 @@ import '../styles/Selection.css'
 import axios from 'axios'
 
 export default function QuizResults(props) {
-    const { correctAnswersCount, numberOfQuizQuestions, selectedCategoryNumber, userName } = useContext(Context);
-
-    console.log(selectedCategoryNumber)
-
-    const setCategoryText = () =>{
-        let categoryText = ''
-        switch(selectedCategoryNumber) {
-            case '9': 
-            categoryText = "General Knowledge";
-            break;
-            case '18':
-            categoryText = "Science: Computer";
-            break;
-            case '23':
-            categoryText = "History";
-            break;
-            case '20':
-            categoryText = "Mythology";
-            break;
-            case '27':
-            categoryText = "Animals";
-            break;
-            case '26':
-            categoryText = "Celebrities";
-            break;
-        }
-        console.log(selectedCategoryNumber)
-        return categoryText
-    }
+    const { correctAnswersCount, numberOfQuizQuestions, selectedCategoryNumber, userName, reassignUserInfo } = useContext(Context);
 
     const sendQuizScore = async (quizRecord) => {
-        console.log('SENDING THE QUIZ')
         const res = await axios.post(`https://trivial-trivia-backend.herokuapp.com/quizscore`, quizRecord)
-        console.log(res)
+    }
+
+    const updateBestCategoryAndScore = async (userName, categoryText, quizRecord) =>{
+        const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${userName}`);
+        if(res.data.bestScore <= quizRecord.score){
+            const newUserInfo = {
+                userName : userName,
+                bestCategory : categoryText,
+                bestScore : quizRecord.score
+            }
+            console.log(newUserInfo)
+            const res = await axios.put(`https://trivial-trivia-backend.herokuapp.com/user/updateUserInfo`, newUserInfo);
+            console.log(res)
+            reassignUserInfo(res.data.newData)
+        }
     }
 
 
 
     useEffect(()=>{
         document.title = "Quiz Results - Trivial Trivia"
+        let categoryText = "No test taken yet"
+
+        switch(selectedCategoryNumber) {
+            case '9': 
+            categoryText = "General Knowledge"
+            break;
+            case '18':
+            categoryText = "Science: Computer"
+            break;
+            case '23':
+            categoryText = "History"
+            break;
+            case '20':
+            categoryText = "Mythology"
+            break;
+            case '27':
+            categoryText = "Animals"
+            break;
+            case '26':
+            categoryText = "Celebrities"
+            break;
+            default:
+                break;
+        }
 
         let today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         const quizRecord = {
-            category : setCategoryText(),
+            category : categoryText,
             score : correctAnswersCount,
             QuizDate : date,
             userUserName : userName
         }
-        console.log(quizRecord)
         
         sendQuizScore(quizRecord)
+
+        updateBestCategoryAndScore(userName, categoryText, quizRecord)
 
     },[])
 
