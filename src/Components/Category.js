@@ -6,7 +6,7 @@ import '../styles/Selection.css'
 export default function Category(){
     const navigate = useNavigate();
 
-    const { category, chooseCategory, quizJSON, fetchQuizJSON } = useContext(Context);
+    const { category, chooseCategory, quizJSON, fetchQuizJSON, reassignCategoryNumber  } = useContext(Context);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     const handleCategoryClick = (event) => {
@@ -18,6 +18,7 @@ export default function Category(){
             alert("Please select a category!")
         }
         category && navigate("/Quiz");
+        reassignCategoryNumber(category)
         chooseCategory(null);
 
         // TODO: if undefined or errors in general, default error page...

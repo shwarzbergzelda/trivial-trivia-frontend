@@ -17,7 +17,8 @@ export const Context = createContext({
         bestScore: "Not Available",
         lastSeen: "Not Available"
     },
-    login : () => {}
+    login : () => {},
+    setSelectedCategoryNumber : null
 });
 
 export default function ContextKeeper(props) {
@@ -27,6 +28,7 @@ export default function ContextKeeper(props) {
     const [quizJSON, setQuizJSON] = useState([]);
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0)
     const [numberOfQuizQuestions, setNumberOfQuizQuestions] = useState(10)
+    const [selectedCategoryNumber,setSelectedCategoryNumber] = useState(null)
 
     //login info
     const [isLogin, setIsLogin] = useState(false)
@@ -57,17 +59,25 @@ export default function ContextKeeper(props) {
         setCorrectAnswersCount(0);
     }
 
-    const setLoginToTrue = () => {
-        console.log("setting logIn to true")
+    const setLoginToTrue = async () => {
         setIsLogin(true)
+
     }
 
     const reassignUserInfo = (info) =>{
         setUserInfo(info)
     }
 
+
+    const reassignCategoryNumber = (number) =>{
+        setSelectedCategoryNumber(number)
+    }
+
+    const reassignUserName = (userName) =>{
+        setUserName(userName)
+    }
+
     const login = async (enteredUserName, enteredPassword) => {
-        console.log("Login working")
         const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/login/${enteredUserName}`);
         if(enteredPassword === res.data.password){
             setLoginToTrue()
@@ -93,7 +103,10 @@ export default function ContextKeeper(props) {
             userInfo: userInfo,
             setLoginToTrue: setLoginToTrue,
             reassignUserInfo: reassignUserInfo,
-            login: login
+            login: login,
+            selectedCategoryNumber : selectedCategoryNumber,
+            reassignCategoryNumber : reassignCategoryNumber,
+            reassignUserName : reassignUserName
         }}>
             {props.children}
         </Context.Provider>

@@ -1,18 +1,24 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Context } from './Context'
 import { useNavigate } from "react-router-dom";
 
 export default function Login(){
     let navigate = useNavigate();
-    const { setLoginToTrue, reassignUserInfo, login, isLogin  } = useContext(Context);
+    const { setLoginToTrue, reassignUserInfo, login, isLogin, reassignUserName  } = useContext(Context);
 
     const [enteredUserName,setEnteredUserName] = useState(null)
     const [enteredPassword,setEnteredPassword] = useState(null)
 
-    const logInAndNavigate = (enteredUserName,enteredPassword) => {
-        login(enteredUserName,enteredPassword)
-        if(isLogin){navigate('/category')}
+    const logInAndNavigate =  (enteredUserName,enteredPassword) => {
+        login(enteredUserName, enteredPassword)
     }
+
+    useEffect(()=>{
+        if(isLogin){
+            reassignUserName(enteredUserName)
+            navigate('/category')
+        }
+    }, [isLogin])
 
     return(
         <div className = "login">
@@ -41,6 +47,11 @@ export default function Login(){
             onClick = {() => navigate('/Register')}
         >
         Register
+        </button>
+        <button className = "button"
+            onClick =  {() => console.log(isLogin)}
+        >
+        Check
         </button>
         </div>
     )
