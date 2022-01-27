@@ -14,17 +14,23 @@ export default function QuizResults(props) {
         let categoryText = ''
         switch(selectedCategoryNumber) {
             case '9': 
-            categoryText = "General Knowledge"
+            categoryText = "General Knowledge";
+            break;
             case '18':
-            categoryText = "Science: Computer"
+            categoryText = "Science: Computer";
+            break;
             case '23':
-            categoryText = "History"
+            categoryText = "History";
+            break;
             case '20':
-            categoryText = "Mythology"
+            categoryText = "Mythology";
+            break;
             case '27':
-            categoryText = "Animals"
+            categoryText = "Animals";
+            break;
             case '26':
-            categoryText = "Celebrities"
+            categoryText = "Celebrities";
+            break;
         }
         console.log(selectedCategoryNumber)
         return categoryText
