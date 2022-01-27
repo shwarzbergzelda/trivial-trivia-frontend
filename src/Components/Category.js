@@ -9,6 +9,10 @@ export default function Category(){
     const { category, chooseCategory, quizJSON, fetchQuizJSON, reassignCategoryNumber  } = useContext(Context);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
+    useEffect(() => {
+        document.title = "Choose Category - Trivial Trivia"
+    }, [])
+
     const handleCategoryClick = (event) => {
         chooseCategory(event.target.value);
     }

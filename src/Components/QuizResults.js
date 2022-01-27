@@ -30,6 +30,7 @@ export default function QuizResults(props) {
 
 
     useEffect(()=>{
+        document.title = "Quiz Results - Trivial Trivia"
         let categoryText = "No test taken yet"
 
         switch(selectedCategoryNumber) {
@@ -54,7 +55,6 @@ export default function QuizResults(props) {
             default:
                 break;
         }
-
 
         let today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();

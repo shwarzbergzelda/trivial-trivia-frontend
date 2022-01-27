@@ -16,6 +16,8 @@ function Profile(){
     const [username, setUsername] = useState("");
 
     useEffect(()=>{
+        document.title = "User Profile - Trivial Trivia"
+
         if(!isLogin){
             navigate('/Login')
         }
