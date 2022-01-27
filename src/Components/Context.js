@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 export const Context = createContext({
@@ -6,14 +7,38 @@ export const Context = createContext({
     chooseCategory: (category) => {},
     quizJSON: null,
     fetchQuizJSON: () => {},
-    correctAnswers: 0
+    correctAnswers: 0,
+    isLogin: false,
+    userName : "Guest",
+    password : null,
+    userInfo : {
+        userName : "Guest",
+        bestCategory : "Not Available",
+        bestScore: "Not Available",
+        lastSeen: "Not Available"
+    },
+    login : () => {}
 });
 
 export default function ContextKeeper(props) {
+    const navigate = useNavigate();
+
     const [category, setCategory] = useState(null);
     const [quizJSON, setQuizJSON] = useState([]);
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0)
     const [numberOfQuizQuestions, setNumberOfQuizQuestions] = useState(10)
+
+    //login info
+    const [isLogin, setIsLogin] = useState(false)
+    const [userName,setUserName] = useState('Guest')
+    const [password,setPassword] = useState(null)
+    const [userInfo, setUserInfo] = useState({
+        userName : "Guest",
+        bestCategory : "Not Available",
+        bestScore: "Not Available",
+        lastSeen: "Not Available"
+    })
+
 
     const chooseCategory = (categoryNumber) => {
         setCategory(categoryNumber);
@@ -31,7 +56,27 @@ export default function ContextKeeper(props) {
     const resetCorrectAnswersCount = () => {
         setCorrectAnswersCount(0);
     }
-        
+
+    const setLoginToTrue = () => {
+        console.log("setting logIn to true")
+        setIsLogin(true)
+    }
+
+    const reassignUserInfo = (info) =>{
+        setUserInfo(info)
+    }
+
+    const login = async (enteredUserName, enteredPassword) => {
+        console.log("Login working")
+        const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/login/${enteredUserName}`);
+        if(enteredPassword === res.data.password){
+            setLoginToTrue()
+            const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${enteredUserName}`);
+            console.log(res.data)
+            reassignUserInfo(res.data)
+        }
+    }
+
     return (
         <Context.Provider value={{
             category: category, 
@@ -41,7 +86,14 @@ export default function ContextKeeper(props) {
             incrementCorrectAnswersCount: incrementCorrectAnswersCount, 
             resetCorrectAnswersCount: resetCorrectAnswersCount,
             correctAnswersCount: correctAnswersCount,
-            numberOfQuizQuestions: numberOfQuizQuestions
+            numberOfQuizQuestions: numberOfQuizQuestions,
+            isLogin: isLogin,
+            userName: userName,
+            password: password,
+            userInfo: userInfo,
+            setLoginToTrue: setLoginToTrue,
+            reassignUserInfo: reassignUserInfo,
+            login: login
         }}>
             {props.children}
         </Context.Provider>

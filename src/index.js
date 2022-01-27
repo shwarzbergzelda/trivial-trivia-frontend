@@ -6,9 +6,7 @@ import ContextProvider from '../src/Components/Context'
 
 ReactDOM.render(
   <React.StrictMode>
-      <ContextProvider>
-        <App />
-      </ContextProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
