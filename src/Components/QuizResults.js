@@ -45,6 +45,8 @@ export default function QuizResults(props) {
 
 
     useEffect(()=>{
+        document.title = "Quiz Results - Trivial Trivia"
+
         let today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
         const quizRecord = {

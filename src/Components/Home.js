@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/Home.css'
 import {Context} from './Context'
@@ -7,6 +7,10 @@ export default function Home(){
 
     // const {isLogin} = useContext(Context);
     let navigate = useNavigate();
+
+    useEffect(() => {
+        document.title = "Trivial Trivia"
+    }, [])
 
     return (
         <div className="home-text">

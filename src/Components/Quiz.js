@@ -38,6 +38,7 @@ export default function Quiz() {
     }
 
     useEffect(() => {
+        document.title = "Quiz - Trivial Trivia"
         resetCorrectAnswersCount();
         setRandomizedAnswersArray(randomizeAnswersOrder(quizJSON[id]));
     },[])

@@ -19,6 +19,10 @@ export default function Register(){
         login(enteredUserName,enteredPassword)
     }
 
+    useEffect(() => {
+        document.title = "Register - Trivial Trivia"
+    }, [])
+
     useEffect(()=>{
         if(isLogin){
             reassignUserName(enteredUserName)

@@ -11,6 +11,10 @@ export default function Login(){
     const [accountCheck,setAccountCheck] = useState('')
     const [emptyCheck, setEmptyCheck] = useState('')
 
+    useEffect(() => {
+        document.title = "Login - Trivial Trivia"
+    }, [])
+
     const logInAndNavigate = async (enteredUserName,enteredPassword) => {
         setEmptyCheck('')
         if((enteredUserName === null || enteredUserName === '') && (enteredPassword === null || enteredPassword === '')){
