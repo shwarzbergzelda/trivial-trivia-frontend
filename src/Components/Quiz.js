@@ -72,11 +72,11 @@ export default function Quiz() {
     
     return(
         <div>
-            <h1 className="header">{quizJSON[id].question.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">")}</h1>
+            <h1 className="header">{quizJSON[id].question.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó")}</h1>
             {randomizedAnswersArray.map((answer, index) => {
                 return (
                     <div className="buttons-grid" key={key++}>
-                        <button className="button" value={index} onClick={handleTriviaAnswerSelect}>{answer.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">")}</button>
+                        <button className="button" value={index} onClick={handleTriviaAnswerSelect}>{answer.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó")}</button>
                     </div>
                 )
             })}
