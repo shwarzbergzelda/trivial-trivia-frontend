@@ -2,9 +2,7 @@ import React, { useContext, useState,useEffect } from 'react';
 import { Context } from './Context'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-
-
-
+import "../styles/Register.css";
 
 export default function Register(){
     let navigate = useNavigate();
@@ -67,31 +65,40 @@ export default function Register(){
     return(
         
         <div className = "Register">
-        <h1>Create Account</h1>
-        <label className='user'> User </label>
+        <h1 className="register-header">Create Account</h1>
+        <div>
+        <label className='user'> Username </label>
         <input
             type = "text"
             placeholder = "Please enter a username"
+            className="user-input-box"
             onChange={(event)=> {
                 setEnteredUserName(event.target.value)
             }} 
         />
+        </div>
+        <div>
+        <label className='user'> Password </label>
         <input 
             type = "password"
             placeholder = "Please enter a password"
+            className="password-input-box"
             onChange={(event) =>{
                 setEnteredPassword(event.target.value)
             }}
         />
-        <button className = "button"
+        <div>
+        <button className = "register-button"
             onClick = {() => RegisterAndNavigate(enteredUserName,enteredPassword)}
         >
         Register
         </button>
-        {emptyCheck === "Please enter a password" && <h1>PLEASE ENTER A PASSWORD</h1>}
-        {emptyCheck === "Please enter a username" && <h1>PLEASE ENTER A USERNAME</h1>}
-        {emptyCheck === "Please enter a username and password" && <h1>PLEASE ENTER A USERNAME AND PASSWORD</h1>}
-        {emptyCheck === "Username already exists" && <h1>USERNAME ALREADY EXIST</h1>}
+        </div>
+        </div>
+        {emptyCheck === "Please enter a password" && <h1 className="error-message">Please enter a password</h1>}
+        {emptyCheck === "Please enter a username" && <h1 className="error-message">Please enter a username</h1>}
+        {emptyCheck === "Please enter a username and password" && <h1 className="error-message">Please enter a username and password</h1>}
+        {emptyCheck === "Username already exists" && <h1 className="error-message">Username already exists. Please choose another one.</h1>}
         </div>
     )
 }

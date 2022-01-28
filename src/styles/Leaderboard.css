@@ -1,0 +1,74 @@
+.leaderboard-header {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 28px;
+}
+
+.select-category-label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.select-category {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+    color: #ffffff;
+    padding: 4px;
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.leaderboard-table {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 21px;
+    margin: auto;
+    width: 500px;
+    padding: 40px;
+    margin-top: -50px;
+}
+
+.leaderboard-row {
+    display: flex;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-bottom: solid white 1px;
+}
+
+.leaderboard-table:last-child {
+    border-bottom: 300px;
+}
+
+.leaderboard-rank {
+    font-weight: 300;
+}
+
+.leaderboard-user-and-score {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    font-weight: 300;
+}
+
+.leaderboard-headers {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin: auto;
+    font-size: 20px;
+    text-decoration-line: underline;
+}
+
+.leaderboard-header-1 {
+    margin-left:45px;
+}
