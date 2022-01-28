@@ -37,22 +37,24 @@ function Profile(){
 
     return (
         <div className="Profile">
-            <img className='profile' src={profile} alt="profile"></img>  
-            <h1>Username: <span className="username">{userInfo.userName}</span></h1>
+            <img className='profile' src={profile} alt="profile"></img> 
+            <div className="profile-details">
+                <h1>Username: <span className="username">{userInfo.userName}</span></h1>
                 {userInfo.bestCategory != "No test taken yet" && 
-                    <div className="profile-details">
+                    <div className="profile-ranking">
                         <h1>Best category: <span className="best-category">{userInfo.bestCategory}</span></h1>
                         <h1>Top score: <span className="best-score">{userInfo.bestScore}/10</span></h1>
-                        <h1>Last login: <span className="last-seen">{userInfo.lastSeen}</span></h1>
+                        <h1>Last login: <span className="last-seen" maxlength="10">{userInfo.lastSeen}</span></h1>
                     </div>
                 }
+            </div>
 
                 {userInfo.bestCategory == "No test taken yet" && 
                     <div>
                         <h1 className="no-tests-taken">No test details available. Take a test to see your top scores!</h1>
                     </div>
                 }
-                <button onClick={() => logOut()}>LOGOUT</button>
+                <button className="logout-button" onClick={() => logOut()}>LOGOUT</button>
         </div>
     )
 }

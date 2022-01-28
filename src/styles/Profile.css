@@ -2,6 +2,10 @@
     font-weight: 300;
 }
 
+.username {
+    text-align: left;
+}
+
 .no-tests-taken {
     font-weight: 500;
     margin: auto;
@@ -9,5 +13,25 @@
 
 .profile-details {
     width: 400px;
+    text-align: left;
+    margin: auto
 }
 
+.profile-ranking {
+    width: 500px;
+    text-align: left;
+}
+
+.logout-button {
+    background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
+    border-radius: 40px;
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 21px;
+    color: #FFFFFF;
+    border: none;
+    margin: 15px 40px;
+    cursor: pointer;
+}

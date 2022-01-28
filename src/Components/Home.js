@@ -5,7 +5,6 @@ import {Context} from './Context'
 
 export default function Home(){
 
-    // const {isLogin} = useContext(Context);
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -19,16 +18,3 @@ export default function Home(){
         </div>
     )
 }
-// <div className="home">
-// <ul>
-//     <li>
-//         <Link to='/Login'> LOGIN </Link>
-//     </li>
-//     <li>
-//         <Link to='/Profile'> PROFILE</Link>
-//     </li>
-//     <li>
-//         <Link to='/Category'> CATEGORY</Link>
-//     </li>
-// </ul>
-// </div>
