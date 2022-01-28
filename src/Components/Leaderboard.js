@@ -44,6 +44,8 @@ export default function Leaderboard(){
                     <option value="Mythology">Mythology</option>
                     <option value="Animals" selected="selected">Animals</option>
                     <option value="Celebrities">Celebrities</option>
+                    <option value="Entertainment: Video Games">Entertainment: Video Games</option>
+                    <option value="TTP">TTP</option>
                 </select>
         </div>
 
