@@ -1,37 +1,25 @@
-.App {
-  text-align: center;
-  background: radial-gradient(50% 50% at 50% 50%, #570101 0%, #000000 100%);
-  background-blend-mode: darken;
-  box-shadow: 5px 4px 5px rgba(0, 0, 0, 0.35);
-  background-repeat: no-repeat;
-  font-family: 'Roboto', sans-serif;
-  min-height: 100vh;
+html, body {
+  height: 100%;
+  overflow-x: hidden;
 }
 
-.leaderboard-button {
-  background: linear-gradient(180deg, rgba(192, 192, 192, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
-  border-radius: 30px;
+body {
+  text-align: center;
+  background: radial-gradient(50% 50% at 50% 50%, #570101 0%, #000000 100%)  no-repeat 
+  center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  height: auto !important;
 }
 
 .lightning-image{
   height: 100px;
 }
 
-.leaderboard-text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 28px;
-  text-decoration-line: underline;
-  color: #FFFFFF;
-}
-
-.leaderboard-rank {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 21px;
-  color: #FFFFFF;
-}

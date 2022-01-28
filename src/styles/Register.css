@@ -1,9 +1,9 @@
-.sign-in-header {
+.register-header{
     text-transform: uppercase;
     font-weight: 400;
-}
 
-.user-label, .password-label {
+}
+.user, .password {
     font-size: 30px;
     margin-right: 20px;
 }
@@ -18,30 +18,17 @@
     background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
     border-radius: 6px;
     color: white;
-    font-size: 20px;
 }
 
 .user-input-box::placeholder, .password-input-box::placeholder {
     color: rgba(214, 210, 210, 0.52);
-    font-size: 15px;
 }
 
-.login {
-    font-size: 45px;
-    background: transparent;
-	border-radius: 2px;
-	color: #fff;
+.Register{
+    font-size: 40px;
 }
 
-.username-form, .password-form {
-    text-align: left;
-    margin: auto;
-    width: 475px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.login-button, .register-button {
+.register-button {
     background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
     border-radius: 40px;
     width: 200px;
@@ -55,14 +42,14 @@
     cursor: pointer;
 }
 
-.error-message {
-    font-size: 20px;
-}
-
-.button:hover, .submit-button:hover{
+.button:hover, .register-button:hover{
     -webkit-animation: animate 3s;
     -moz-animation: animate 3s;
     animation: animate 3s;
+}
+
+.error-message {
+    font-size: 20px;
 }
 
 @-webkit-keyframes animate{

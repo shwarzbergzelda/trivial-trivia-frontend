@@ -2,10 +2,11 @@ import React, { useContext, useState, useEffect, memo } from 'react'
 import { Context } from './Context'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Selection.css'
+import '../styles/Quiz.css'
 
 export default function Quiz() {
 
-    const { incrementCorrectAnswersCount, resetCorrectAnswersCount } = useContext(Context);
+    const { incrementCorrectAnswersCount, resetCorrectAnswersCount, trackAnswers, answersTracker, resetAnswersTracker} = useContext(Context);
     const { quizJSON } = useContext(Context);
     const [randomizedAnswersArray, setRandomizedAnswersArray] = useState([]);
     const [correctAnswerIndex, setCorrectAnswersIndex] = useState(-1);
@@ -13,7 +14,6 @@ export default function Quiz() {
     const navigate = useNavigate();
     let selectedAnswerChoiceIndex = -1;
     let key = 0;
-    console.log(quizJSON)
 
     const randomizeAnswersOrder = (triviaProblem) => {
         const answersArray = [];
@@ -41,9 +41,11 @@ export default function Quiz() {
         document.title = "Quiz - Trivial Trivia"
         resetCorrectAnswersCount();
         setRandomizedAnswersArray(randomizeAnswersOrder(quizJSON[id]));
+        resetAnswersTracker();
     },[])
 
     const handleTriviaProblemSubmit = () => {
+        trackAnswers(randomizedAnswersArray[selectedAnswerChoiceIndex]);
         if (selectedAnswerChoiceIndex == -1) {
             alert('Please select an answer choice!');
             return;
@@ -70,6 +72,8 @@ export default function Quiz() {
     }
 
     
+    console.log(answersTracker);
+
     return(
         <div>
             <h1 className="header">{quizJSON[id].question.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó")}</h1>

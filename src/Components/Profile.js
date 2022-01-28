@@ -3,8 +3,8 @@ import {Context} from './Context'
 import Login from "./Login"
 import { useNavigate } from "react-router-dom";
 import profile from '../images/Profile.png'
+import "../styles/Profile.css"
 import axios from 'axios'
-
 
 function Profile(){
 
@@ -12,7 +12,7 @@ function Profile(){
 
     const {isLogin,userInfo, reassignUserInfo} = useContext(Context);
 
-    console.log(isLogin)
+    const [username, setUsername] = useState("");
 
     const fetchNewProfile = async () => {
         const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${userInfo.userName}`);
@@ -31,15 +31,26 @@ function Profile(){
         }
     },[])
 
+    console.log(userInfo.bestCategory)
+
     return (
         <div className="Profile">
-            <img className='profile' src={profile} alt="profile"></img>
-            <h1>{userInfo.userName}</h1>
-            <h1>{userInfo.bestCategory}</h1>
-            <h1>{userInfo.bestScore}</h1>
-            <h1>{userInfo.lastSeen}</h1>
-        </div>
+            <img className='profile' src={profile} alt="profile"></img>  
+            <h1>Username: <span className="username">{userInfo.userName}</span></h1>
+                {userInfo.bestCategory != "No test taken yet" && 
+                    <div>
+                        <h1>Best category: <span>{userInfo.bestCategory}</span></h1>
+                        <h1>Top score: <span>{userInfo.bestScore}/10</span></h1>
+                        <h1><span>{userInfo.lastSeen}</span></h1>
+                    </div>
+                }
 
+                {userInfo.bestCategory == "No test taken yet" && 
+                    <div>
+                        <h1 className="no-tests-taken">No test details available. Take a test to see your top scores!</h1>
+                    </div>
+                }
+        </div>
     )
 }
 
