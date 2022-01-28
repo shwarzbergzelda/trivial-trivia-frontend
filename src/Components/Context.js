@@ -46,7 +46,7 @@ export default function ContextKeeper(props) {
         lastSeen: "Not Available"
     })
 
-    const [cookies, setCookie] = useCookies(['user'])
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
 
     const chooseCategory = (categoryNumber) => {
         setCategory(categoryNumber);
@@ -139,6 +139,13 @@ export default function ContextKeeper(props) {
         setAnswersTracker([]);
     }
 
+    const clearLoginCookies = () => {
+        removeCookie('Username')
+        removeCookie('isLogin')
+        removeCookie('UserInfo')
+        window.location.reload(false)
+    }
+
     useEffect(()=>{
         reassignWithCookies()
     }, [])
@@ -166,7 +173,8 @@ export default function ContextKeeper(props) {
             reassignQuizJSON : reassignQuizJSON,
             answersTracker: answersTracker,
             trackAnswers, trackAnswers,
-            resetAnswersTracker: resetAnswersTracker
+            resetAnswersTracker: resetAnswersTracker,
+            clearLoginCookies : clearLoginCookies
         }}>
             {props.children}
         </Context.Provider>
