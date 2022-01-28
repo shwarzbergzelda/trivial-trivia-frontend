@@ -87,6 +87,10 @@ export default function ContextKeeper(props) {
         setUserName(userName)
     }
 
+    const reassignQuizJSON = (quiz) =>{
+        setQuizJSON(quiz)
+    }
+
     const login = async (enteredUserName, enteredPassword) => {
         const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/login/${enteredUserName}`);
         if(res.data === "" && enteredUserName !== null ){
@@ -149,7 +153,8 @@ export default function ContextKeeper(props) {
             login: login,
             selectedCategoryNumber : selectedCategoryNumber,
             reassignCategoryNumber : reassignCategoryNumber,
-            reassignUserName : reassignUserName
+            reassignUserName : reassignUserName,
+            reassignQuizJSON : reassignQuizJSON
         }}>
             {props.children}
         </Context.Provider>

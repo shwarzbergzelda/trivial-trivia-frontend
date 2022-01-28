@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from './Context'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Selection.css'
+import axios from 'axios';
 
 export default function Category(){
     const navigate = useNavigate();
 
-    const { category, chooseCategory, quizJSON, fetchQuizJSON, reassignCategoryNumber  } = useContext(Context);
+    const { category, chooseCategory, quizJSON, fetchQuizJSON, reassignCategoryNumber, reassignQuizJSON } = useContext(Context);
     const [wasSubmitted, setWasSubmitted] = useState(false);
 
     useEffect(() => {
@@ -28,8 +29,18 @@ export default function Category(){
         // TODO: if undefined or errors in general, default error page...
     }
 
+    const fetchTTPQuiz = async () =>{
+        const res = await axios.get("https://trivial-trivia-backend.herokuapp.com/getTTPquiz");
+        console.log(res.data.results)
+        reassignQuizJSON(res.data.results)
+    }
+
     useEffect (()=>{
-        fetchQuizJSON();
+        if(category === 'TTP'){
+            fetchTTPQuiz()
+        }else{
+            fetchQuizJSON();
+        }
     },[category])
 
     return(
@@ -46,7 +57,9 @@ export default function Category(){
             <div>
                 <button className="button" onClick={handleCategoryClick} value="27">Animals</button>
                 <button className="button" onClick={handleCategoryClick} value="26">Celebrities</button>
+                <button className="button" onClick={handleCategoryClick} value="TTP">TTP</button>
             </div>
+
             
             <button className="submit-button" onClick={handleStartClick}>Start</button>
         </div>
