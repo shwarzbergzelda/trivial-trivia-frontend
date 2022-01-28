@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect, memo } from 'react'
 import { Context } from './Context'
 import { useNavigate } from 'react-router-dom'
-import '../styles/Selection.css'
 import '../styles/Quiz.css'
 
 export default function Quiz() {
@@ -63,10 +62,6 @@ export default function Quiz() {
         }
     }
 
-    // let stringData = JSON.stringify(res.data.results)
-    //     stringData = stringData.replaceAll("&#039;", "'")
-    //     stringData = stringData.replaceAll("&quot;", '"')
-
     const handleTriviaAnswerSelect = (event) => {
         selectedAnswerChoiceIndex = event.target.value;
     }
@@ -76,14 +71,16 @@ export default function Quiz() {
 
     return(
         <div>
-            <h1 className="header">{quizJSON[id].question.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&")}</h1>
-            {randomizedAnswersArray.map((answer, index) => {
-                return (
-                    <div className="buttons-grid" key={key++}>
-                        <button className="button" value={index} onClick={handleTriviaAnswerSelect}>{answer.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&")}</button>
-                    </div>
-                )
-            })}
+            <h1 className="header">{quizJSON[id].question.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&").replaceAll("&aring;", "ö").replaceAll("&auml;", "ä").replaceAll("&ouml;", "ö").replaceAll("&rsquo;", "’").replaceAll("&iacute;", "í").replaceAll("&aacute;", "á").replaceAll("&Uuml;", "Ü")}</h1>
+            <div  className="buttons-grid">
+                {randomizedAnswersArray.map((answer, index) => {
+                    return (
+                        <div key={key++}>
+                            <button className="quiz-answer-button" value={index} onClick={handleTriviaAnswerSelect}>{answer.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&").replaceAll("&aring;", "ö").replaceAll("&auml;", "ä").replaceAll("&ouml;", "ö").replaceAll("&rsquo;", "’").replaceAll("&iacute;", "í").replaceAll("&aacute;", "á").replaceAll("&Uuml;", "Ü")}</button>
+                        </div>
+                    )
+                })}
+            </div>
             <button className="submit-button" onClick={handleTriviaProblemSubmit}>Submit</button>
         </div>
     )

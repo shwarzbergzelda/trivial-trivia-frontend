@@ -1,5 +1,61 @@
 .buttons-grid {
-    display: flex;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    column-gap: 5px;
+    margin: auto;
+    width:fit-content;
+    align-items: center;
+}
+
+.quiz-answer-button {
+    background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
+    border-radius: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 21px;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 50px;
+    min-height: 85px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+}
+
+.quiz-answer-button:hover {
+    -webkit-animation: animate 3s;
+    -moz-animation: animate 3s;
+    animation: animate 3s;
+}
+
+@-webkit-keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+@-moz-keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+@keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+
+.quiz-answer-button:focus {
+    background: linear-gradient(180deg, rgba(12, 32, 61, 0.87) -7.55%, rgba(196, 196, 196, 0.3) 92.45%);
+}
+
+.submit-button:active {
+    background: linear-gradient(180deg, rgba(12, 32, 61, 0.87) -7.55%, rgba(196, 196, 196, 0.3) 92.45%);
 }

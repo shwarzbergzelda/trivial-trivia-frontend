@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Context } from './Context'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Selection.css'
+import '../styles/Category.css'
 import axios from 'axios';
 
 export default function Category(){
