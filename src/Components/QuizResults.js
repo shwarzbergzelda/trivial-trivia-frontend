@@ -53,6 +53,8 @@ export default function QuizResults(props) {
             case '26':
             categoryText = "Celebrities"
             break;
+            case 'TTP':
+            categoryText = "TTP"
             default:
                 break;
         }
