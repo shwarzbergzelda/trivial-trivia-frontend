@@ -89,7 +89,7 @@ export default function QuizResults(props) {
     }
 
     const unRegify = (string) => {
-        return string.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&")
+        return string.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&").replaceAll("&aring;", "ö").replaceAll("&auml;", "ä").replaceAll("&ouml;", "ö").replaceAll("&rsquo;", "’").replaceAll("&iacute;", "í").replaceAll("&aacute;", "á").replaceAll("&Uuml;", "Ü")
     }
     // .replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó")
     return (

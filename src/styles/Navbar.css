@@ -11,6 +11,21 @@
     width: 80px;
 }
 
+.logo-and-title {
+    display: flex;
+}
+
+.navbar-header {
+    font-size: 30px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.navbar-header a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .profile {
     width: 50px;
 }
@@ -36,11 +51,11 @@
 }
 
 .navbar-button a {
+    color: #ffffff;
     text-decoration: none;
-    color: white;
 }
 
-.navbar-button:hover {
+.navbar-button:hover, .navbar-header:hover {
     -webkit-animation: animate 3s;
     -moz-animation: animate 3s;
     animation: animate 3s;
