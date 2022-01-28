@@ -31,17 +31,15 @@ function Profile(){
         }
     },[])
 
-    console.log(userInfo.bestCategory)
-
     return (
         <div className="Profile">
             <img className='profile' src={profile} alt="profile"></img>  
             <h1>Username: <span className="username">{userInfo.userName}</span></h1>
                 {userInfo.bestCategory != "No test taken yet" && 
-                    <div>
-                        <h1>Best category: <span>{userInfo.bestCategory}</span></h1>
-                        <h1>Top score: <span>{userInfo.bestScore}/10</span></h1>
-                        <h1><span>{userInfo.lastSeen}</span></h1>
+                    <div className="profile-details">
+                        <h1>Best category: <span className="best-category">{userInfo.bestCategory}</span></h1>
+                        <h1>Top score: <span className="best-score">{userInfo.bestScore}/10</span></h1>
+                        <h1>Last login: <span className="last-seen">{userInfo.lastSeen}</span></h1>
                     </div>
                 }
 

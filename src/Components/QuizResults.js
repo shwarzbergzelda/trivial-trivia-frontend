@@ -30,8 +30,6 @@ export default function QuizResults(props) {
         }
     }
 
-
-
     useEffect(()=>{
         document.title = "Quiz Results - Trivial Trivia"
         let categoryText = "No test taken yet"
@@ -58,18 +56,6 @@ export default function QuizResults(props) {
             default:
                 break;
         }
-        console.log(selectedCategoryNumber)
-        return categoryText
-    }
-
-    const sendQuizScore = async (quizRecord) => {
-        console.log('SENDING THE QUIZ')
-        const res = await axios.post(`https://trivial-trivia-backend.herokuapp.com/quizscore`, quizRecord)
-        console.log(res)
-    }
-
-    useEffect(()=>{
-        document.title = "Quiz Results - Trivial Trivia";
 
         let today = new Date(),
         date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -96,6 +82,10 @@ export default function QuizResults(props) {
         }
     }
 
+    const unRegify = (string) => {
+        return string.replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó").replaceAll("&amp;", "&")
+    }
+    // .replaceAll("&#039;", "'").replaceAll("&quot;", '"').replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&oacute;", "ó")
     return (
         <div className="quiz-results-main">
             <h1 className="quiz-results-header">Quiz Results</h1>
@@ -109,15 +99,15 @@ export default function QuizResults(props) {
             {displayResults && quizJSON.map((quizObj, index) => {
                 return (
                     <div className="quiz-recap">
-                        <h1>{index + 1}. {quizObj.question}</h1>
+                        <h1>{index + 1}. {unRegify(quizObj.question)}</h1>
                         <ol>
-                            <li className="quiz-recap-answer">{quizObj.correct_answer}</li>
+                            <li className="quiz-recap-answer">{unRegify(quizObj.correct_answer)}</li>
                             {quizObj.incorrect_answers.map((incorrect_answer) => {
-                                return <li className="quiz-recap-answer">{incorrect_answer}</li>
+                                return <li className="quiz-recap-answer">{unRegify(incorrect_answer)}</li>
                             })}
                         </ol>
-                        <h4 className="user-answer">Your answer: {answersTracker[index]}</h4>
-                        <h4 className="correct-answer">Correct answer: {quizObj.correct_answer}</h4>
+                        <h4 className="user-answer">Your answer: <span className="user-answer-displayed">{unRegify(answersTracker[index])}</span></h4>
+                        <h4 className="correct-answer">Correct answer: <span className="correct-answer-displayed">{unRegify(quizObj.correct_answer)}</span></h4>
                     </div>
                 )
             })}

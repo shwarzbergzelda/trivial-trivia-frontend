@@ -65,6 +65,10 @@
     animation: animate 3s;
 }
 
+.user-answer-displayed, .correct-answer-displayed {
+    font-weight: 400;
+}
+
 @-webkit-keyframes animate{
     0% {text-shadow: none;}
     50% {text-shadow: 1px 0px 20px #fff;}
