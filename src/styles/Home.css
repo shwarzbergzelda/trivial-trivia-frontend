@@ -13,10 +13,10 @@
     text-decoration: none;
     font-weight: bold;
     font-size: 210px;
-    color: #FFFFFF;
     text-transform: uppercase;
     animation: 5s slide-down;
     margin-top: 0%;
+    color: #ffffff;
 }
 .slide-right {
     width: 100%;
@@ -26,13 +26,13 @@
   }
   
 .home-text {
-    animation: 2s slide-down 0s forwards;
-    transform:translateY(-100%);
+    animation: 2s slide-right 0s forwards;
+    transform:translateX(-100%);
 }
   
-@keyframes slide-down {
+@keyframes slide-right {
     to {
-        transform:translateY(0%);
+        transform:translateX(0);
     }
 }
 

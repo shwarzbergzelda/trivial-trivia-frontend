@@ -1,0 +1,86 @@
+.sign-in-header {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.user-label, .password-label {
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.user-input-box, .password-input-box {
+    border: none;
+    border-top: 0px;
+    margin-bottom: 20px;
+    padding: 5px;
+    width: 275px;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
+    border-radius: 6px;
+    color: white;
+    font-size: 20px;
+}
+
+.user-input-box::placeholder, .password-input-box::placeholder {
+    color: rgba(214, 210, 210, 0.52);
+    font-size: 15px;
+}
+
+.login {
+    font-size: 45px;
+    background: transparent;
+	border-radius: 2px;
+	color: #fff;
+}
+
+.username-form, .password-form {
+    text-align: left;
+    margin: auto;
+    width: 475px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-button, .register-button {
+    background: linear-gradient(180deg, rgba(255, 245, 245, 0.3) 0%, rgba(196, 196, 196, 0.3) 100%);
+    border-radius: 40px;
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 21px;
+    color: #FFFFFF;
+    border: none;
+    margin: 15px 40px;
+    cursor: pointer;
+}
+
+.error-message {
+    font-size: 20px;
+}
+
+.button:hover, .submit-button:hover{
+    -webkit-animation: animate 3s;
+    -moz-animation: animate 3s;
+    animation: animate 3s;
+}
+
+@-webkit-keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+@-moz-keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+@keyframes animate{
+    0% {text-shadow: none;}
+    50% {text-shadow: 1px 0px 20px #fff;}
+    100% {text-shadow: none;}
+}
+
+.button:focus {
+    background: linear-gradient(180deg, rgba(12, 32, 61, 0.87) -7.55%, rgba(196, 196, 196, 0.3) 92.45%);
+}

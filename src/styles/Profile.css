@@ -1,0 +1,13 @@
+.username, .best-category, .best-score, .last-seen {
+    font-weight: 300;
+}
+
+.no-tests-taken {
+    font-weight: 500;
+    margin: auto;
+}
+
+.profile-details {
+    width: 400px;
+}
+

@@ -19,7 +19,10 @@ export const Context = createContext({
         lastSeen: "Not Available"
     },
     login : () => {},
-    setSelectedCategoryNumber : null
+    setSelectedCategoryNumber : null,
+    answersTracker: [],
+    trackAnswers: () => {},
+    resetAnswersTracker: () => {}
 });
 
 export default function ContextKeeper(props) {
@@ -30,6 +33,7 @@ export default function ContextKeeper(props) {
     const [correctAnswersCount, setCorrectAnswersCount] = useState(0)
     const [numberOfQuizQuestions, setNumberOfQuizQuestions] = useState(10)
     const [selectedCategoryNumber,setSelectedCategoryNumber] = useState(null)
+    const [answersTracker, setAnswersTracker] = useState([]);
 
     //login info
     const [isLogin, setIsLogin] = useState(false)
@@ -41,8 +45,6 @@ export default function ContextKeeper(props) {
         bestScore: "Not Available",
         lastSeen: "Not Available"
     })
-
-    //Cookie
 
     const [cookies, setCookie] = useCookies(['user'])
 
@@ -129,10 +131,17 @@ export default function ContextKeeper(props) {
         }
     }
 
+    const trackAnswers = (answer) => {
+        setAnswersTracker(prevAnswersArray => [...prevAnswersArray, answer]);
+    }
+
+    const resetAnswersTracker = () => {
+        setAnswersTracker([]);
+    }
+
     useEffect(()=>{
         reassignWithCookies()
     }, [])
-
 
     return (
         <Context.Provider value={{
@@ -154,7 +163,10 @@ export default function ContextKeeper(props) {
             selectedCategoryNumber : selectedCategoryNumber,
             reassignCategoryNumber : reassignCategoryNumber,
             reassignUserName : reassignUserName,
-            reassignQuizJSON : reassignQuizJSON
+            reassignQuizJSON : reassignQuizJSON,
+            answersTracker: answersTracker,
+            trackAnswers, trackAnswers,
+            resetAnswersTracker: resetAnswersTracker
         }}>
             {props.children}
         </Context.Provider>
