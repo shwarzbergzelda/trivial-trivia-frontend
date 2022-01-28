@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from './Context'
 import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 export default function Login(){
     let navigate = useNavigate();
-    const { setLoginToTrue, reassignUserInfo, login, isLogin, reassignUserName  } = useContext(Context);
+    const { setLoginToTrue, reassignUserInfo, login, isLogin, reassignUserName, userInfo } = useContext(Context);
 
     const [enteredUserName,setEnteredUserName] = useState(null)
     const [enteredPassword,setEnteredPassword] = useState(null)
     const [accountCheck,setAccountCheck] = useState('')
     const [emptyCheck, setEmptyCheck] = useState('')
+
 
     useEffect(() => {
         document.title = "Login - Trivial Trivia"
@@ -39,6 +41,7 @@ export default function Login(){
             navigate('/category')
         }
     }, [isLogin])
+
 
     return(
         <div className = "login">
