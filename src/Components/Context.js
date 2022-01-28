@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 export const Context = createContext({
     category: null,
@@ -45,12 +46,20 @@ export default function ContextKeeper(props) {
         lastSeen: "Not Available"
     })
 
+    const [cookies, setCookie] = useCookies(['user'])
+
     const chooseCategory = (categoryNumber) => {
         setCategory(categoryNumber);
     }
 
     const fetchQuizJSON = async () => {
-        const res = await axios.get(`https://opentdb.com/api.php?amount=10&category=${category}&difficulty=medium&type=multiple`);
+        const res = await axios.get(`https://opentdb.com/api.php?amount=10&category=${category}&d&type=multiple`);
+        console.log(res.data.results)
+        // let stringData = JSON.stringify(res.data.results)
+        // stringData = stringData.replaceAll("&#039;", "'")
+        // stringData = stringData.replaceAll("&quot;", '"')
+        // console.log(stringData)
+        // const newRes = JSON.parse(stringData)
         setQuizJSON(res.data.results)
     }
 
@@ -91,6 +100,30 @@ export default function ContextKeeper(props) {
             setLoginToTrue()
             const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${enteredUserName}`);
             reassignUserInfo(res.data)
+            const userInfoString = JSON.stringify(res.data);
+            console.log(res.data)
+            console.log(userInfoString)
+            setCookie('UserInfo', res.data, { path: '/' });
+        }
+    }
+
+    const setCookies = async () => {
+        console.log(cookies.isLogin)
+        if(isLogin && cookies.isLogin === undefined){
+            console.log('Setting Cookies')
+            setCookie('Username', userName, { path: '/' });
+            setCookie('isLogin', isLogin, { path: '/' });
+        }
+    }
+
+    setCookies()
+
+    const reassignWithCookies = () => {
+        if(cookies.isLogin){
+            console.log('Reassigning with cookie info')
+            setIsLogin(cookies.isLogin)
+            setUserName(cookies.Username)
+            setUserInfo(cookies.UserInfo)
         }
     }
 
@@ -101,6 +134,10 @@ export default function ContextKeeper(props) {
     const resetAnswersTracker = () => {
         setAnswersTracker([]);
     }
+
+    useEffect(()=>{
+        reassignWithCookies()
+    }, [])
 
     return (
         <Context.Provider value={{

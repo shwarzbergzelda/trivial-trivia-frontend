@@ -4,17 +4,27 @@ import Login from "./Login"
 import { useNavigate } from "react-router-dom";
 import profile from '../images/Profile.png'
 import "../styles/Profile.css"
+import axios from 'axios'
 
 function Profile(){
 
     let navigate = useNavigate();
 
-    const {isLogin,userInfo} = useContext(Context);
+    const {isLogin,userInfo, reassignUserInfo} = useContext(Context);
 
     const [username, setUsername] = useState("");
 
+    const fetchNewProfile = async () => {
+        const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${userInfo.userName}`);
+        reassignUserInfo(res.data)
+    }
+
     useEffect(()=>{
         document.title = "User Profile - Trivial Trivia"
+
+        if(isLogin){
+            fetchNewProfile()
+        }
 
         if(!isLogin){
             navigate('/Login')
