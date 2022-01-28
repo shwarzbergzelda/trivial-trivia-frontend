@@ -36,25 +36,29 @@ export default function QuizResults(props) {
 
         switch(selectedCategoryNumber) {
             case '9': 
-            categoryText = "General Knowledge"
-            break;
+                categoryText = "General Knowledge"
+                break;
             case '18':
-            categoryText = "Science: Computer"
-            break;
+                categoryText = "Science: Computer"
+                break;
             case '23':
-            categoryText = "History"
-            break;
+                categoryText = "History"
+                break;
             case '20':
-            categoryText = "Mythology"
-            break;
+                categoryText = "Mythology"
+                break;
             case '27':
-            categoryText = "Animals"
-            break;
+                categoryText = "Animals"
+                break;
             case '26':
-            categoryText = "Celebrities"
-            break;
+                categoryText = "Celebrities"
+                break;
+            case '15':
+                categoryText = "Entertainment: Video Games";
+                break;
             case 'TTP':
-            categoryText = "TTP"
+                categoryText = "TTP"
+                break;
             default:
                 break;
         }

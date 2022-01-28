@@ -46,7 +46,7 @@ export default function Category(){
     return(
         <div className="selection-menu">
             <h1 className="header">Choose a Category</h1>
-            <div>
+            <div className="buttons">
                 <button className="button" onClick={handleCategoryClick} value="9">General Knowledge</button>
                 <button className="button" onClick={handleCategoryClick} value="18">Science: Computer</button>
             </div>
@@ -57,6 +57,9 @@ export default function Category(){
             <div>
                 <button className="button" onClick={handleCategoryClick} value="27">Animals</button>
                 <button className="button" onClick={handleCategoryClick} value="26">Celebrities</button>
+            </div>
+            <div>
+                <button className="button" onClick={handleCategoryClick} value="15">Entertainment: Video Games</button>
                 <button className="button" onClick={handleCategoryClick} value="TTP">TTP</button>
             </div>
 
