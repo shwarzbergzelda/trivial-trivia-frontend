@@ -10,13 +10,17 @@ function Profile(){
 
     let navigate = useNavigate();
 
-    const {isLogin,userInfo, reassignUserInfo} = useContext(Context);
+    const {isLogin,userInfo, reassignUserInfo, clearLoginCookies } = useContext(Context);
 
     const [username, setUsername] = useState("");
 
     const fetchNewProfile = async () => {
         const res = await axios.get(`https://trivial-trivia-backend.herokuapp.com/user/${userInfo.userName}`);
         reassignUserInfo(res.data)
+    }
+
+    const logOut = () =>{
+        clearLoginCookies()
     }
 
     useEffect(()=>{
@@ -48,6 +52,7 @@ function Profile(){
                         <h1 className="no-tests-taken">No test details available. Take a test to see your top scores!</h1>
                     </div>
                 }
+                <button onClick={() => logOut()}>LOGOUT</button>
         </div>
     )
 }
